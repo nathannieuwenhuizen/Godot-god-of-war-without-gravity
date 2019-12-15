@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\demo",
+    "\\demo\\bin",
+    "\\demo\\bin\\win64",
+    "\\src",
+    "\\src\\entities"
+  ],
+  "SelectedNode": "\\src\\playerentity.cpp",
+  "PreviewInSolutionExplorer": false
+}
