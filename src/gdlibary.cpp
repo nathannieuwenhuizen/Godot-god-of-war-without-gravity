@@ -1,6 +1,7 @@
 #include "gdexample.h"
-#include "playerentity.h"
-#include "entity.h"
+#include "enteties/playerentity.h"
+#include "enteties/entity.h"
+#include "enteties/enemyentity.h"
 extern "C" 
 {
     void GDN_EXPORT godot_gdnative_init(godot_gdnative_init_options *o) {
@@ -16,6 +17,8 @@ extern "C"
 
 		godot::register_class<godot::Entity>();
 		godot::register_class<godot::PlayerEntity>();
+		godot::register_class<godot::EnemyEntity>();
+
 		godot::register_class<godot::GDExample>();
     }
 }
