@@ -10,7 +10,7 @@ class PlayerEntity : public Sprite {
     GODOT_CLASS(PlayerEntity, Sprite)
     
     private:
-		float time_passed;
+		//float time_passed;
 		Vector2 mousePos;
 
     public:
