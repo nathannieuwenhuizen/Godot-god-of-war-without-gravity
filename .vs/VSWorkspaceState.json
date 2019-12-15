@@ -3,8 +3,10 @@
     "",
     "\\demo",
     "\\demo\\bin",
-    "\\src"
+    "\\src",
+    "\\src\\entities",
+    "\\src\\managers"
   ],
-  "SelectedNode": "\\SConstruct",
+  "SelectedNode": "\\src\\entities\\playerentity.cpp",
   "PreviewInSolutionExplorer": false
 }

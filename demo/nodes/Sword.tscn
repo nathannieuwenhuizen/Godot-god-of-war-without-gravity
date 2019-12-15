@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://bin/Sword.gdns" type="Script" id=1]
+[ext_resource path="res://sprites/sword.png" type="Texture" id=2]
+
+[node name="Sword" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 1 )
+angle = 90.0
+speed = 0.4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 92.6148, 0.620171 )
+scale = Vector2( 0.452152, 0.338438 )
+polygon = PoolVector2Array( -146.051, -21.8415, -102.528, -20.7519, -102.004, -37.0106, -82.0738, -37.7973, -82.336, -19.9652, 71.0726, -44.8777, 145.81, -0.559692, 67.6636, 41.136, -82.0738, 21.4682, -81.8115, 40.087, -101.479, 39.3003, -102.004, 24.0906, -146.846, 23.3039 )
+
+[node name="Sprite" type="Sprite" parent="CollisionPolygon2D"]
+texture = ExtResource( 2 )
