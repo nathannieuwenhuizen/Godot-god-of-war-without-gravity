@@ -6,10 +6,10 @@ void PlayerEntity::_register_methods() {
 	register_method("_process", &PlayerEntity::_process);
 	register_method("_ready", &PlayerEntity::_ready);
 
-	register_property<PlayerEntity, Vector2>("mouse pos", &PlayerEntity::mousePos, Vector2(0,0));
+	//register_property<PlayerEntity, Vector2>("mouse pos", &PlayerEntity::mousePos, Vector2(0,0));
 	//Entity::_register_methods();
-	register_property<PlayerEntity, float>("speed", &Entity::speed, 5.0);
-	register_property<PlayerEntity, int>("health", &Entity::maxHealth, 100);
+	//register_property<PlayerEntity, float>("speed", &Entity::speed, 5.0);
+	//register_property<PlayerEntity, int>("health", &Entity::maxHealth, 100);
 	//register_property<PlayerEntity, Vector2>("direction", &Entity::direction, Vector2(0, 0));
 
 }
@@ -23,20 +23,13 @@ PlayerEntity::~PlayerEntity() {
 }
 void PlayerEntity::Slash() {
 	sword->Slash();
-	Godot::print("hello");
+}
+void PlayerEntity::Die() {
+	//Entity::Die();
+	//GameManager::instance->GameOver();
 }
 
 void PlayerEntity::_ready() {
-	/*const godot::String gsCamera2D = "Camera2D";
-	Node* n;
-	godot::Array a = get_children();
-	int64_t childCount = get_child_count();
-	for (int64_t x = 0; x < childCount; x++) {
-		n = get_child(x);
-		if (gsCamera2D == n->get_name()) {
-			x = (Node2D*)n;
-		}
-	}*/
 	GameManager::pPlayer = this;
 }
 
@@ -47,13 +40,12 @@ void PlayerEntity::_init() {
 	//Godot::print(randomVector);
 	/*randomVector.x = 1;
 	randomVector.y = 1;*/
-	Entity::SetDirection(Vector2(1,0));
+	Entity::SetDirection(Vector2(1,-1));
 }
 
 void PlayerEntity::_process(float delta) {
 	Input* i = Input::get_singleton();
 	if (i->is_action_just_pressed("leftClick")) {
-		Godot::print("lash");
 		Slash();
 	}
 
@@ -65,7 +57,16 @@ void PlayerEntity::_process(float delta) {
 		Godot::print("Collided with: " + get_slide_collision(i).collider.name);
 	}*/
 
+	speed = 5.0;
 	Entity::_process(delta);
+	
 	mousePos = get_local_mouse_position();
 	rotate(mousePos.angle());
+	//Entity::SetDirection(Vector2(1, 0));
 }
+
+void PlayerEntity::RedirectSpeed() {
+	Vector2 redirectedSpeed = (get_global_mouse_position() - get_position());
+	SetDirection(redirectedSpeed * -1);
+}
+

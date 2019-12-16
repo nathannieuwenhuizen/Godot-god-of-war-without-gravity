@@ -5,8 +5,9 @@
     "\\demo\\bin",
     "\\src",
     "\\src\\entities",
-    "\\src\\managers"
+    "\\src\\managers",
+    "\\src\\ui"
   ],
-  "SelectedNode": "\\src\\entities\\playerentity.cpp",
+  "SelectedNode": "\\src\\entities\\sword.cpp",
   "PreviewInSolutionExplorer": false
 }

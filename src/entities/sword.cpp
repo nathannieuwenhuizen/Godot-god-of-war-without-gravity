@@ -5,10 +5,6 @@ using namespace godot;
 void Sword::_register_methods() {
 	register_method("_process", &Sword::_process);
 	register_method("_ready", &Sword::_ready);
-
-	register_property<Sword, float>("angle", &Sword::angle, 180);
-	register_property<Sword, float>("speed", &Sword::speed, .1);
-
 }
 
 Sword::Sword() {
@@ -21,25 +17,55 @@ void Sword::Slash() {
 	if (slashing) { return; }
 
 	slashing = true;
-	set_rotation_degrees(-angle / 2);
+	clockWise = !clockWise;
+	Godot::print(clockWise);
+	set_scale(Vector2(1,1));
+
+	if (clockWise) {
+		set_rotation_degrees(-angle / 2);
+	}
+	else {
+		set_rotation_degrees(angle / 2);
+	}
+	set_position(Vector2(0, 0));
 	show();
 	Godot::print("SLASH!");
 }
 
 void Sword::_ready() {
 	GameManager::pPlayer->sword = this;
+	RetrieveSword();
 }
 
 void Sword::_init() {
-	hide();
 }
 
+void Sword::RetrieveSword() {
+	set_scale(Vector2(0.01, 0.01));
+	hide();
+	hitted = false;
+	slashing = false;
+}
 void Sword::_process(float delta) {
 	if (slashing) {
-		rotate(speed);
-		if (get_rotation_degrees() > (angle / 2)) {
-			slashing = false;
-			hide();
+		//swinging sword
+		rotate(speed * (clockWise ? 1 : -1));
+		if (clockWise) {
+			if (get_rotation_degrees() > (angle / 2)) {
+				RetrieveSword();
+			}
+		}
+		else {
+			if (get_rotation_degrees() < -(angle / 2)) {
+				RetrieveSword();
+			}
+		}
+
+		//check if it hit some enemy
+		Ref<KinematicCollision2D> info  = move_and_collide(Vector2(0, 0));
+		if (info != NULL && !hitted) {
+			hitted = true;
+			GameManager::pPlayer->RedirectSpeed();
 		}
 	}
 }

@@ -13,23 +13,26 @@ class Entity : public KinematicBody2D {
     
     private:
     public:
-		int maxHealth;
-		int health;
+		int maxHealth = 100;
+		int health = 100;
 		float speed;
 		Vector2 direction;
-
+		bool alive = true;
+		int deathIndex = 0;
+		int delayDeathIndex = 2;
+		
         static void _register_methods();
 
         Entity();
         ~Entity();
         void _init(); // our initializer called by Godot
 
-		void Die();
+		virtual void Die();
 		void Spawn(Vector2 _pos);
 		void TakeDamage(int value);
 		void SetDirection(Vector2 val);
 
-        void _process(float delta);
+        virtual void _process(float delta);
 };
 
 }

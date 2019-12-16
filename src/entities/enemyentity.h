@@ -22,7 +22,7 @@ class EnemyEntity : public Entity {
 
         EnemyEntity();
         ~EnemyEntity();
-
+		void Die();
         void _init(); // our initializer called by Godot
         void _process(float delta);
 };
