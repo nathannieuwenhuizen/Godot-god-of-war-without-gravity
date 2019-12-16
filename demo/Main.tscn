@@ -1,12 +1,40 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://bin/GameManager.gdns" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://bin/GDExample.gdns" type="Script" id=3]
 [ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://nodes/Enemy.tscn" type="PackedScene" id=5]
-[ext_resource path="res://nodes/ResultScreen.tscn" type="PackedScene" id=6]
-[ext_resource path="res://bin/EnemySpawner.gdns" type="Script" id=7]
+[ext_resource path="res://sprites/UI/darkred.png" type="Texture" id=6]
+[ext_resource path="res://bin/ResultScreen.gdns" type="Script" id=7]
+[ext_resource path="res://sprites/UI/light grey.png" type="Texture" id=8]
+[ext_resource path="res://fonts/unispace bold italic.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://fonts/unispace italic.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://fonts/unispace.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://bin/EnemySpawner.gdns" type="Script" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 63
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 39
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=4]
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 27
+outline_size = 5
+outline_color = Color( 0.101961, 0.282353, 0.00392157, 1 )
+font_data = ExtResource( 9 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -25,8 +53,152 @@ scale = Vector2( 1, 0.995853 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ResultScreen" parent="CanvasLayer" instance=ExtResource( 6 )]
+[node name="ResultScreen" type="TextureRect" parent="CanvasLayer"]
 visible = false
+margin_top = 0.698303
+margin_right = 1026.0
+margin_bottom = 619.698
+texture = ExtResource( 6 )
+stretch_mode = 2
+script = ExtResource( 7 )
+
+[node name="grey BG" type="TextureRect" parent="CanvasLayer/ResultScreen"]
+editor/display_folded = true
+margin_left = 26.0
+margin_top = 33.0
+margin_right = 995.0
+margin_bottom = 412.0
+texture = ExtResource( 8 )
+stretch_mode = 2
+
+[node name="Hader" type="Label" parent="CanvasLayer/ResultScreen/grey BG"]
+margin_left = 1.0
+margin_top = -4.0
+margin_right = 966.0
+margin_bottom = 300.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.286275, 0.0196078, 0.0196078, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+text = "You got captured!"
+align = 1
+valign = 1
+
+[node name="ResultScoreText" type="Label" parent="CanvasLayer/ResultScreen"]
+margin_left = 27.0
+margin_top = 225.0
+margin_right = 992.0
+margin_bottom = 391.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.286275, 0.0196078, 0.0196078, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+text = "Your score is: 1256 NEW HIGHSCORE!"
+align = 1
+valign = 1
+
+[node name="QuitButton" type="TextureButton" parent="CanvasLayer/ResultScreen"]
+editor/display_folded = true
+visible = false
+margin_left = 72.0
+margin_top = 455.0
+margin_right = 394.0
+margin_bottom = 570.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 6 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/ResultScreen/QuitButton"]
+margin_top = 8.0
+margin_right = 309.0
+margin_bottom = 117.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+text = "QUIT"
+align = 1
+valign = 1
+
+[node name="StartButton" type="TextureButton" parent="CanvasLayer/ResultScreen"]
+margin_left = 72.0
+margin_top = 455.0
+margin_right = 394.0
+margin_bottom = 570.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 6 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/ResultScreen/StartButton"]
+margin_left = 6.64822
+margin_top = 4.67584
+margin_right = 315.648
+margin_bottom = 113.676
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+text = "Menu"
+align = 1
+valign = 1
+
+[node name="RestartButton" type="TextureButton" parent="CanvasLayer/ResultScreen"]
+editor/display_folded = true
+margin_left = 600.0
+margin_top = 455.0
+margin_right = 922.0
+margin_bottom = 570.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 6 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/ResultScreen/RestartButton"]
+margin_top = 8.0
+margin_right = 309.0
+margin_bottom = 117.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+text = "Restart"
+align = 1
+valign = 1
 
 [node name="EnemySpawner" type="Node2D" parent="."]
-script = ExtResource( 7 )
+script = ExtResource( 12 )
+
+[node name="ScoreTextLabel" type="Label" parent="."]
+margin_left = 32.664
+margin_top = 39.8048
+margin_right = 152.664
+margin_bottom = 64.8048
+custom_fonts/font = SubResource( 4 )
+text = "Score"
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_left = 105.662
+margin_top = 29.7094
+margin_right = 225.662
+margin_bottom = 78.7094
+rect_pivot_offset = Vector2( 0, 24.31 )
+custom_fonts/font = SubResource( 5 )
+text = "000"
+valign = 1
+
+[node name="ComboLabel" type="Label" parent="."]
+margin_left = 77.0408
+margin_top = 20.2097
+margin_right = 156.041
+margin_bottom = 50.2097
+rect_rotation = -15.2837
+rect_pivot_offset = Vector2( 0, 24.31 )
+custom_fonts/font = SubResource( 4 )
+text = "x64"
+align = 1
+valign = 1
+[connection signal="pressed" from="CanvasLayer/ResultScreen/QuitButton" to="CanvasLayer/ResultScreen" method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/ResultScreen/StartButton" to="CanvasLayer/ResultScreen" method="_on_StartButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/ResultScreen/RestartButton" to="CanvasLayer/ResultScreen" method="_on_RestartButton_pressed"]

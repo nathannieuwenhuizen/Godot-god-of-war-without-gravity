@@ -9,13 +9,14 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 63
+outline_size = 5
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 30
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 39
 font_data = ExtResource( 6 )
 
@@ -28,7 +29,6 @@ stretch_mode = 2
 script = ExtResource( 2 )
 
 [node name="grey BG" type="TextureRect" parent="."]
-editor/display_folded = true
 margin_left = 26.0
 margin_top = 33.0
 margin_right = 995.0
@@ -44,7 +44,7 @@ margin_bottom = 300.0
 size_flags_stretch_ratio = 0.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.286275, 0.0196078, 0.0196078, 1 )
-custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0.631373, 0.631373, 1 )
 text = "You got captured!"
 align = 1
 valign = 1
@@ -55,7 +55,7 @@ margin_top = 225.0
 margin_right = 992.0
 margin_bottom = 391.0
 size_flags_stretch_ratio = 0.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.286275, 0.0196078, 0.0196078, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
 text = "Your score is: 1256 NEW HIGHSCORE!"
@@ -64,6 +64,7 @@ valign = 1
 
 [node name="QuitButton" type="TextureButton" parent="."]
 editor/display_folded = true
+visible = false
 margin_left = 72.0
 margin_top = 455.0
 margin_right = 394.0
@@ -78,7 +79,7 @@ margin_top = 8.0
 margin_right = 309.0
 margin_bottom = 117.0
 size_flags_stretch_ratio = 0.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
 text = "QUIT"
@@ -100,11 +101,34 @@ margin_top = 8.0
 margin_right = 309.0
 margin_bottom = 117.0
 size_flags_stretch_ratio = 0.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
 text = "Restart"
 align = 1
 valign = 1
+
+[node name="MenuButton" type="TextureButton" parent="."]
+margin_left = 122.0
+margin_top = 451.0
+margin_right = 444.0
+margin_bottom = 566.0
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="MenuButton"]
+margin_top = 8.0
+margin_right = 309.0
+margin_bottom = 117.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+text = "Menu"
+align = 1
+valign = 1
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
 [connection signal="pressed" from="RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_RestartButton_pressed"]

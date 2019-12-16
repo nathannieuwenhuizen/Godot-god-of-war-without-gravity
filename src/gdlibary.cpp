@@ -6,6 +6,7 @@
 #include "managers/gamemanager.h"
 #include "ui/resultscreen.h"
 #include "managers/enemyspawner.h"
+#include "ui/menuscreen.h"
 
 extern "C" 
 {
@@ -22,7 +23,9 @@ extern "C"
 
 		godot::register_class<godot::GameManager>();
 		godot::register_class<godot::EnemySpawner>();
+
 		godot::register_class<godot::ResultScreen>();
+		godot::register_class<godot::MenuScreen>();
 
 		godot::register_class<godot::Entity>();
 		godot::register_class<godot::PlayerEntity>();

@@ -24,9 +24,10 @@ public:
 
     void _init(); // our initializer called by Godot
 
-	//Label* scoreLabel;
+	Label* scoreLabel;
 	void _on_RestartButton_pressed(Variant body);
 	void _on_QuitButton_pressed(Variant body);
+	void _on_StartButton_pressed(Variant body);
 };
 
 }

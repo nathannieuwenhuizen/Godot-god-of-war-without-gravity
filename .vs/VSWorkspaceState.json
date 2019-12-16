@@ -4,10 +4,11 @@
     "\\demo",
     "\\demo\\bin",
     "\\src",
+    "\\src\\backend",
     "\\src\\entities",
     "\\src\\managers",
     "\\src\\ui"
   ],
-  "SelectedNode": "\\src\\entities\\sword.cpp",
+  "SelectedNode": "\\src\\ui\\resultscreen.cpp",
   "PreviewInSolutionExplorer": false
 }

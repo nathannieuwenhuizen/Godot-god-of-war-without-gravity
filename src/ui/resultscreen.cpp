@@ -5,6 +5,7 @@ using namespace godot;
 void ResultScreen::_register_methods() {
 	register_method("_on_RestartButton_pressed", &ResultScreen::_on_RestartButton_pressed);
 	register_method("_on_QuitButton_pressed", &ResultScreen::_on_QuitButton_pressed);
+	register_method("_on_StartButton_pressed", &ResultScreen::_on_StartButton_pressed);
 }
 
 ResultScreen::ResultScreen() {
@@ -20,24 +21,24 @@ void ResultScreen::_init() {
 	const godot::String scoreText = "ResultScoreText";
 	Node* n;
 	godot::String gsName;
-	godot::Array a = get_children();
+	godot::Array a = this->get_children();
 	int64_t childCount = get_child_count();
-	Godot::print("childcount:");
+	Godot::print("childcount result canvas:");
 	Godot::print(childCount);
 
 	for (int64_t x = 0; x < childCount; x++) {
 		n = get_child(x);
 		gsName = n->get_name();
-		Godot::print("name: " + gsName);
+		Godot::print("result canvas name: " + gsName);
 
 		if (gsName == scoreText) {
 			scoreLabel = (Label*)n;
 		}
 	}
-	if (scoreLabel != NULL) {
+	/*if (scoreLabel != NULL) {
 		scoreLabel->set_text("test");
-	}
-	*/
+	}*/
+	
 }
 
 
@@ -51,4 +52,9 @@ void ResultScreen::_on_QuitButton_pressed(Variant)
 {
 	SceneTree* t = get_tree();
 	t->quit();
+}
+void ResultScreen::_on_StartButton_pressed(Variant)
+{
+	SceneTree* t = get_tree();
+	t->change_scene("res://nodes/Menu.tscn");
 }

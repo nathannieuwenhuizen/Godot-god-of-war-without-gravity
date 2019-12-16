@@ -29,7 +29,6 @@ void Sword::Slash() {
 	}
 	set_position(Vector2(0, 0));
 	show();
-	Godot::print("SLASH!");
 }
 
 void Sword::_ready() {
@@ -43,6 +42,9 @@ void Sword::_init() {
 void Sword::RetrieveSword() {
 	set_scale(Vector2(0.01, 0.01));
 	hide();
+	if (!hitted) {
+		GameManager::instance->CancelCombo();
+	}
 	hitted = false;
 	slashing = false;
 }

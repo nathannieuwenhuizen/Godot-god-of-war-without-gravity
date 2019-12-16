@@ -16,6 +16,7 @@ void EnemyEntity::_register_methods() {
 void EnemyEntity::Die() {
 	Entity::Die();
 	queue_free();
+	GameManager::instance->IncreaseScore();
 	//GameManager::instance->GameOver();
 }
 

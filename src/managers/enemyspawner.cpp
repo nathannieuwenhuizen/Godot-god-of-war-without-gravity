@@ -18,6 +18,7 @@ EnemySpawner::~EnemySpawner() {
 } 
 
 void EnemySpawner::_ready() {
+	GameManager::instance->enemySpawner = this;
 }
 
 void EnemySpawner::Spawn() {

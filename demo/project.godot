@@ -15,9 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="newdemo"
-run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+config/name="Floating god of WAR!"
+run/main_scene="res://nodes/Menu.tscn"
+config/icon="res://sprites/sword.png"
 
 [display]
 

@@ -26,7 +26,7 @@ void PlayerEntity::Slash() {
 }
 void PlayerEntity::Die() {
 	//Entity::Die();
-	//GameManager::instance->GameOver();
+	GameManager::instance->GameOver();
 }
 
 void PlayerEntity::_ready() {

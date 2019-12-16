@@ -1,0 +1,127 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://sprites/UI/darkred.png" type="Texture" id=1]
+[ext_resource path="res://sprites/UI/light grey.png" type="Texture" id=2]
+[ext_resource path="res://fonts/unispace bold italic.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://fonts/unispace italic.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://bin/MenuScreen.gdns" type="Script" id=5]
+[ext_resource path="res://fonts/unispace.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 63
+outline_size = 5
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 39
+font_data = ExtResource( 6 )
+
+[node name="Menu" type="Node2D"]
+
+[node name="StartScreen" type="TextureRect" parent="."]
+margin_top = 0.698303
+margin_right = 1026.0
+margin_bottom = 619.698
+texture = ExtResource( 1 )
+stretch_mode = 2
+
+[node name="grey BG" type="TextureRect" parent="StartScreen"]
+margin_left = 26.0
+margin_top = 33.0
+margin_right = 995.0
+margin_bottom = 412.0
+texture = ExtResource( 2 )
+stretch_mode = 2
+
+[node name="Header" type="Label" parent="StartScreen/grey BG"]
+margin_left = 1.0
+margin_top = -5.05264
+margin_right = 968.69
+margin_bottom = 298.947
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.286275, 0.0196078, 0.0196078, 1 )
+custom_colors/font_outline_modulate = Color( 0.933333, 1, 0.780392, 1 )
+text = "Floating god of
+WAR!"
+align = 1
+valign = 1
+
+[node name="ResultScoreText" type="Label" parent="StartScreen"]
+margin_left = 56.4738
+margin_top = 265.0
+margin_right = 1021.47
+margin_bottom = 431.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.286275, 0.0196078, 0.0196078, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+text = "Highscore: 0000"
+align = 1
+valign = 1
+script = ExtResource( 5 )
+
+[node name="QuitButton" type="TextureButton" parent="StartScreen"]
+editor/display_folded = true
+margin_left = 818.549
+margin_top = 515.461
+margin_right = 1140.55
+margin_bottom = 630.461
+rect_scale = Vector2( 0.564296, 0.469836 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="StartScreen/QuitButton"]
+margin_top = 8.0
+margin_right = 309.0
+margin_bottom = 117.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+text = "QUIT"
+align = 1
+valign = 1
+
+[node name="StartButton" type="TextureButton" parent="StartScreen"]
+editor/display_folded = true
+margin_left = 358.947
+margin_top = 456.053
+margin_right = 680.947
+margin_bottom = 571.053
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 1 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="StartScreen/StartButton"]
+margin_top = 10.1053
+margin_right = 309.0
+margin_bottom = 119.105
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
+text = "Start"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="."]
+margin_left = 33.2411
+margin_top = 444.323
+margin_right = 186.241
+margin_bottom = 543.323
+text = "Controls:
+Click on where to slash
+
+Objective:
+Try to survive as long as
+possible."
+[connection signal="pressed" from="StartScreen/QuitButton" to="StartScreen/ResultScoreText" method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="StartScreen/StartButton" to="StartScreen/ResultScoreText" method="_on_StartButton_pressed"]

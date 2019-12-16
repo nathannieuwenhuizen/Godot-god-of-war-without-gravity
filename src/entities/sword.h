@@ -18,7 +18,7 @@ class Sword : public KinematicBody2D {
 		float angle = 90;
 		bool slashing = false;
 		float speed = 0.2;
-		bool hitted = false;
+		bool hitted = true;
 		bool clockWise = false;
     public:
         static void _register_methods();
