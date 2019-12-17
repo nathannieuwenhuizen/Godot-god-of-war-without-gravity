@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Kill the boii"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://nodes/Menu.tscn"
 config/icon="res://sprites/sword.png"
 
 [display]
