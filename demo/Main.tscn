@@ -1,53 +1,71 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://bin/GameManager.gdns" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://bin/GDExample.gdns" type="Script" id=3]
-[ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://nodes/Enemy.tscn" type="PackedScene" id=5]
-[ext_resource path="res://sprites/UI/darkred.png" type="Texture" id=6]
-[ext_resource path="res://bin/ResultScreen.gdns" type="Script" id=7]
-[ext_resource path="res://sprites/UI/light grey.png" type="Texture" id=8]
-[ext_resource path="res://fonts/unispace bold italic.ttf" type="DynamicFontData" id=9]
-[ext_resource path="res://fonts/unispace italic.ttf" type="DynamicFontData" id=10]
-[ext_resource path="res://fonts/unispace.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://sprites/bg.jpg" type="Texture" id=2]
+[ext_resource path="res://sprites/score ui.png" type="Texture" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://bin/GDExample.gdns" type="Script" id=5]
+[ext_resource path="res://nodes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://nodes/Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://bin/ResultScreen.gdns" type="Script" id=8]
+[ext_resource path="res://sprites/UI/button.png" type="Texture" id=9]
+[ext_resource path="res://fonts/GODOFWAR.TTF" type="DynamicFontData" id=10]
+[ext_resource path="res://sprites/UI/button_pressed.png" type="Texture" id=11]
 [ext_resource path="res://bin/EnemySpawner.gdns" type="Script" id=12]
 
 [sub_resource type="DynamicFont" id=1]
-size = 63
-font_data = ExtResource( 9 )
+size = 81
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 30
 font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 39
-font_data = ExtResource( 11 )
+size = 50
+font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=4]
+size = 20
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 10 )
 
 [sub_resource type="DynamicFont" id=5]
-size = 27
+size = 33
 outline_size = 5
 outline_color = Color( 0.101961, 0.282353, 0.00392157, 1 )
-font_data = ExtResource( 9 )
+font_data = ExtResource( 10 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 
+[node name="BG" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.345098 )
+margin_top = 1.0
+margin_right = 1041.0
+margin_bottom = 609.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="BG2" type="TextureRect" parent="."]
+margin_top = 1.0
+margin_right = 264.0
+margin_bottom = 100.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 2 )
-script = ExtResource( 3 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="Player" parent="." instance=ExtResource( 6 )]
 position = Vector2( 152.321, 239.593 )
 
-[node name="Enemy" parent="." instance=ExtResource( 5 )]
+[node name="Enemy" parent="." instance=ExtResource( 7 )]
 position = Vector2( 903.488, 90.1406 )
 scale = Vector2( 1, 0.995853 )
 
@@ -55,21 +73,23 @@ scale = Vector2( 1, 0.995853 )
 
 [node name="ResultScreen" type="TextureRect" parent="CanvasLayer"]
 visible = false
-margin_top = 0.698303
-margin_right = 1026.0
-margin_bottom = 619.698
-texture = ExtResource( 6 )
-stretch_mode = 2
-script = ExtResource( 7 )
+self_modulate = Color( 1, 0.266667, 0.266667, 1 )
+margin_top = 1.0
+margin_right = 1038.0
+margin_bottom = 601.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+script = ExtResource( 8 )
 
 [node name="grey BG" type="TextureRect" parent="CanvasLayer/ResultScreen"]
-editor/display_folded = true
 margin_left = 26.0
 margin_top = 33.0
 margin_right = 995.0
 margin_bottom = 412.0
-texture = ExtResource( 8 )
-stretch_mode = 2
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 1
 
 [node name="Hader" type="Label" parent="CanvasLayer/ResultScreen/grey BG"]
 margin_left = 1.0
@@ -80,7 +100,7 @@ size_flags_stretch_ratio = 0.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.286275, 0.0196078, 0.0196078, 1 )
 custom_colors/font_outline_modulate = Color( 1, 0, 0, 1 )
-text = "You got captured!"
+text = "You got boii'ed"
 align = 1
 valign = 1
 
@@ -98,16 +118,14 @@ align = 1
 valign = 1
 
 [node name="QuitButton" type="TextureButton" parent="CanvasLayer/ResultScreen"]
-editor/display_folded = true
 visible = false
 margin_left = 72.0
 margin_top = 455.0
 margin_right = 394.0
 margin_bottom = 570.0
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 6 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 11 )
 expand = true
-stretch_mode = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/ResultScreen/QuitButton"]
 margin_top = 8.0
@@ -122,14 +140,14 @@ align = 1
 valign = 1
 
 [node name="StartButton" type="TextureButton" parent="CanvasLayer/ResultScreen"]
+editor/display_folded = true
 margin_left = 72.0
 margin_top = 455.0
 margin_right = 394.0
 margin_bottom = 570.0
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 6 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 11 )
 expand = true
-stretch_mode = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/ResultScreen/StartButton"]
 margin_left = 6.64822
@@ -150,10 +168,9 @@ margin_left = 600.0
 margin_top = 455.0
 margin_right = 922.0
 margin_bottom = 570.0
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 6 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 11 )
 expand = true
-stretch_mode = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/ResultScreen/RestartButton"]
 margin_top = 8.0

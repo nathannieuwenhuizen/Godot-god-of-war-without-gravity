@@ -31,14 +31,23 @@ EnemyEntity::~EnemyEntity() {
 
 void EnemyEntity::_init() {
     // initialize any variables here
+	speed = 3.0;
+
 }
 
 void EnemyEntity::_process(float delta) {
 	target = GameManager::pPlayer->get_position() - get_position();
 	set_rotation(target.angle());
 
-	speed = 3.0;
 	Entity::SetDirection(target);
 	Entity::_process(delta);
+
+	if (get_rotation() > 3.12 / 2 || get_rotation() < -3.12 / 2) {
+		set_scale(Vector2(1, -1));
+	}
+	else {
+		set_scale(Vector2(1, 1));
+	}
+
 
 }

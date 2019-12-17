@@ -15,8 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Floating god of WAR!"
-run/main_scene="res://nodes/Menu.tscn"
+config/name="Kill the boii"
+run/main_scene="res://Main.tscn"
 config/icon="res://sprites/sword.png"
 
 [display]

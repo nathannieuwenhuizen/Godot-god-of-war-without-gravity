@@ -56,13 +56,6 @@ void Entity::_process(float delta) {
 	Ref<KinematicCollision2D> info = move_and_collide(direction * speed);
 	if (info != NULL) {
 		TakeDamage(100);
-		Godot::print("coll info: ");
-		Godot::print(info.ptr()->get_collider()->get_class());
-		//Godot::print(info.ptr()->get_script());
-		//Godot::print(info.ptr()->get_collider_id);
-		Godot::print(typeid(info.ptr()->get_script()).name());
-		Godot::print(typeid(Entity*).name());
-		//Godot::print(info.ptr()->get_collider()->get_script());
 	}
 
 	if (alive == false) {

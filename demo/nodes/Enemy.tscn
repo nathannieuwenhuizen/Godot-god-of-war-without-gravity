@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://bin/EnemyEntity.gdns" type="Script" id=1]
-[ext_resource path="res://sprites/enemy.png" type="Texture" id=2]
+[ext_resource path="res://sprites/boy.png" type="Texture" id=2]
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 2
@@ -14,4 +14,7 @@ scale = Vector2( 0.213534, 0.186222 )
 polygon = PoolVector2Array( 129.849, 14.7116, -119.769, -123.895, -94.6815, -82.5014, -92.8, 98.1266, -122.905, 143.284, -122.905, 143.284 )
 
 [node name="Sprite" type="Sprite" parent="CollisionPolygon2D"]
+position = Vector2( 2.86481, -5.74864 )
+scale = Vector2( 0.393546, 0.416789 )
 texture = ExtResource( 2 )
+flip_h = true

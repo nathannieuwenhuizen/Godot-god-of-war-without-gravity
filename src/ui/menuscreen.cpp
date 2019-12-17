@@ -25,7 +25,7 @@ void MenuScreen::_init() {
 void MenuScreen::_on_StartButton_pressed(Variant)
 {
 	SceneTree* t = get_tree();
-	t->change_scene("res://main.tscn");
+	t->change_scene("res://Main.tscn");
 	//t->reload_current_scene();
 }
 

@@ -34,13 +34,10 @@ void PlayerEntity::_ready() {
 }
 
 void PlayerEntity::_init() {
-    // initialize any variables here
-	//Vector2 randomVector = Vector2(rand() * 2 - 1, rand() * 2 - 1);
-	//Godot::print("random vector");
-	//Godot::print(randomVector);
-	/*randomVector.x = 1;
-	randomVector.y = 1;*/
-	Entity::SetDirection(Vector2(1,-1));
+
+	Entity::SetDirection(Vector2(1,0));
+	speed = 5.0;
+
 }
 
 void PlayerEntity::_process(float delta) {
@@ -48,16 +45,8 @@ void PlayerEntity::_process(float delta) {
 	if (i->is_action_just_pressed("leftClick")) {
 		Slash();
 	}
+	
 
-	/*if (is_coll)
-	int length = 5;
-	for (int i = 0; i < length; ++i) {
-		godot::Ref<godot::KinematicCollision2D> collission = get_slide_collision(i);
-		
-		Godot::print("Collided with: " + get_slide_collision(i).collider.name);
-	}*/
-
-	speed = 5.0;
 	Entity::_process(delta);
 	
 	mousePos = get_local_mouse_position();
