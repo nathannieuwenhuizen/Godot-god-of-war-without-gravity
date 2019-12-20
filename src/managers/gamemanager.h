@@ -59,7 +59,6 @@ class GameManager : public Node2D {
         static void _register_methods();
 
 		GameManager();
-        ~GameManager();
 		~GameManager();
 
         void _init();

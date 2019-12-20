@@ -9,6 +9,6 @@
     "\\src\\managers",
     "\\src\\ui"
   ],
-  "SelectedNode": "\\src\\ui\\menuscreen.cpp",
+  "SelectedNode": "\\src\\managers\\gamemanager.h",
   "PreviewInSolutionExplorer": false
 }
