@@ -29,6 +29,8 @@ class GameManager : public Node2D {
     GODOT_CLASS(GameManager, Node2D) 
     
     public:
+		//static GameManager& Instance();
+
 		//game objects
 		static PlayerEntity* pPlayer;
 		static GameManager* instance;
@@ -58,6 +60,7 @@ class GameManager : public Node2D {
 
 		GameManager();
         ~GameManager();
+		~GameManager();
 
         void _init();
 		void _ready();

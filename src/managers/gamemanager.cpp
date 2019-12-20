@@ -9,6 +9,12 @@ void GameManager::_register_methods() {
 
 }
 
+//GameManager& GameManager::Instance()
+//{
+//	static GameManager instance;
+//	return instance;
+//}
+
 GameManager::GameManager() {
 	GameManager::instance = this;
 	hs = new Highscore();
@@ -19,6 +25,8 @@ GameManager::~GameManager() {
 
 void GameManager::HandleInputEvent(InputEvent* e) {
 	godot::String gsClass = e->get_class();
+
+	//Instance()
 
 	const godot::String gsIEK = "InputEventKey";
 	if (gsClass == gsIEK) {
@@ -77,6 +85,12 @@ void GameManager::GameOver() {
 		hs->setHighScore(score);
 	}
 	l->set_text( "Your score is: " + String(Vector2(0, (real_t)score)).right(3) + optionalText);
+	l->set_text(("Your score is: " + std::to_string(score) + optionalText).c_str());
+
+	std::string s = "Your score is: " + std::to_string(score) + optionalText;
+	const char* cp = s.c_str();
+
+	godot::String gs(cp);
 
 	Godot::print("result!");
 }
